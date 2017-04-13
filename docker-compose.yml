@@ -1,7 +1,12 @@
-Squid:
-  image: sameersbn/squid:3.3.8-23
+squid:
+  image: icyxp/squid:3.3.8-23
   ports:
     - "3128:3128"
   volumes:
-    - /srv/docker/squid/cache:/var/spool/squid3
+    - /var/log/squid3:/var/log/squid3
+    - /var/cache/squid3:/var/spool/squid3
+    - /etc/localtime:/etc/localtime:ro
+  privileged: true
   restart: always
+  hostname: squid
+  container_name: squid
